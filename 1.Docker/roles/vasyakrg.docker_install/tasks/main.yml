@@ -1,0 +1,91 @@
+---
+- name: Install aptitude using apt
+  apt:
+    name: 'aptitude'
+    state: 'latest'
+    update_cache: 'yes'
+    force_apt_get: 'yes'
+
+- name: 'Install prerequisites'
+  apt:
+    name:
+      - 'apt-transport-https'
+      - 'ca-certificates'
+      - 'curl'
+      - 'software-properties-common'
+      - 'gnupg2'
+    state: 'present'
+    update_cache: yes
+
+- name: 'Add the docker apt signing key'
+  apt_key:
+    url: 'https://download.docker.com/linux/ubuntu/gpg'
+
+- name: 'Add the official docker repo'
+  apt_repository:
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} stable'
+    state: 'present'
+
+- name: 'Install docker'
+  apt:
+    name:
+      - 'docker-ce'
+      - 'docker-ce-cli'
+      - 'containerd.io'
+    state: 'present'
+    update_cache: yes
+
+- name: 'Create the /etc/docker directory'
+  file:
+    path: '/etc/docker'
+    state: 'directory'
+    mode: '0700'
+
+- name: 'Add any additional docker startup options via the daemon.json config file'
+  copy:
+    content: "{{ docker_additional_service_opts }}"
+    dest: '/etc/docker/daemon.json'
+    owner: 'root'
+    group: 'root'
+    mode: '0600'
+  notify: 'docker-restart-service'
+
+- name: 'Start the docker service'
+  service:
+    name: 'docker'
+    state: 'started'
+    enabled: 'yes'
+
+- name: 'Add current user to docker group'
+  become: yes
+  user:
+    name: "{{ docker_user }}"
+    groups: 'docker'
+    append: yes
+
+- name: 'Check that the docker.pid exists'
+  stat:
+    path: /run/docker.pid
+  register: stat_result
+  failed_when: not stat_result.stat.exists
+  tags: docker_check
+
+- name: 'Result of check docker.pid'
+  debug:
+    msg: 'Docker started'
+  when: stat_result.stat.exists
+  tags: docker_check
+
+- name: 'Install Docker-compose'
+  get_url:
+    url: 'https://github.com/docker/compose/releases/download/{{ docker_version_docker_compose }}/docker-compose-Linux-x86_64'
+    dest: /usr/local/bin/docker-compose
+    mode: 'a+x'
+  tags: docker_compose_only
+
+- name: 'Create symlink to docker-compose'
+  file:
+    src: '/usr/local/bin/docker-compose'
+    dest: '/usr/bin/docker-compose'
+    state: 'link'
+  tags: docker_compose_only

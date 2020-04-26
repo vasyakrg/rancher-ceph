@@ -1,0 +1,3 @@
+- name: vasyakrg.docker_install
+  src: git+https://github.com/vasyakrg/docker_install.git
+  version: origin/master

@@ -1,0 +1,21 @@
+nodes:
+  - address: 95.217.220.28
+    user: root
+    role: [controlplane, worker, etcd]
+  - address: 95.217.220.27
+    user: root
+    role: [controlplane, worker, etcd]
+  - address: 95.217.186.24
+    user: root
+    role: [controlplane, worker, etcd]
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24
+
+ingress:
+  provider: nginx
+  options:
+    use-forwarded-headers: "true"

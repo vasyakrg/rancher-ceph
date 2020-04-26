@@ -1,0 +1,30 @@
+---
+- hosts: 'localhost'
+  roles:
+    - role: 'docker_install'
+      become: true
+  tasks:
+    - name: 'Check that the docker.pid exists'
+      stat:
+        path: /run/docker.pid
+      register: stat_result
+      failed_when: stat_result.stat.exists != true
+
+    - name: 'Result of check docker.pid'
+      debug:
+        msg: 'Docker started'
+      when: stat_result.stat.exists
+
+    - name: 'Pull in the latest nginx container'
+      become: true
+      docker_image:
+        name: 'nginx:latest'
+      when: stat_result.stat.exists
+
+    - name: 'Start the nginx container'
+      become: true
+      docker_container:
+        name: 'nginx'
+        image: 'nginx:latest'
+        state: 'started'
+      when: stat_result.stat.exists

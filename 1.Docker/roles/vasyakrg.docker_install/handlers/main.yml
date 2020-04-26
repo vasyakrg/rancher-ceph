@@ -1,0 +1,12 @@
+---
+- name: 'docker-apt-get-update'
+  become: true
+  apt:
+    update_cache: true
+
+- name: 'docker-restart-service'
+  become: true
+  service:
+    name: 'docker'
+    state: 'restarted'
+    enabled: 'yes'

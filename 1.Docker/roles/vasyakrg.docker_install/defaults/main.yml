@@ -1,0 +1,5 @@
+---
+docker_user: ubuntu
+docker_version_docker_compose: 1.25.0-rc2
+docker_additional_service_opts: |
+  {}

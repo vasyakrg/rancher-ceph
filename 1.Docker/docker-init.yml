@@ -1,0 +1,17 @@
+- hosts: all
+  roles:
+    - role: vasyakrg.docker_install
+      tags: docker
+      become: true
+
+  vars:
+    docker_user: "root"
+    docker_additional_service_opts: |
+      {
+        "exec-opts": ["native.cgroupdriver=systemd"],
+        "log-driver": "json-file",
+        "log-opts": {
+          "max-size": "100m"
+        },
+        "storage-driver": "overlay2"
+      }
