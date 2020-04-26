@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# create and set domain name `rke.amegaserver.com` in DNS-servers BEFORE!
+
 kubectl create namespace cattle-system
 
 helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
