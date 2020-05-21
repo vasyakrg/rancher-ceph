@@ -1,11 +1,11 @@
 nodes:
-  - address: 95.217.220.28
+  - address: 10.10.10.70
     user: root
     role: [controlplane, worker, etcd]
-  - address: 95.217.220.27
+  - address: 10.10.10.71
     user: root
     role: [controlplane, worker, etcd]
-  - address: 95.217.186.24
+  - address: 10.10.10.72
     user: root
     role: [controlplane, worker, etcd]
 

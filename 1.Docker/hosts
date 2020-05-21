@@ -1,7 +1,7 @@
 [workers]
-k8s-1 ansible_ssh_host=
-k8s-2 ansible_ssh_host=
-k8s-3 ansible_ssh_host=
+k8s-1 ansible_ssh_host=10.10.10.70
+k8s-2 ansible_ssh_host=10.10.10.71
+k8s-3 ansible_ssh_host=10.10.10.72
 
 [storages]
 node-1 ansible_ssh_host=
