@@ -20,5 +20,7 @@ helm upgrade --install \
 
 kubectl -n cert-manager rollout status deploy/cert-manager
 
+sleep 10
+
 kubectl apply -f certmanager/certmanager-deploy.yaml
 kubectl apply -f certmanager/cluster-issuer.yaml

@@ -35,6 +35,9 @@ services:
   kube-controller:
     extra_args:
       terminated-pod-gc-threshold: 100
+  kubelet:
+    extra_args:
+      max-pods: 250
 
 
 ingress:
