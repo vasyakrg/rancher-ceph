@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: orc-letsencrypt-issuer
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: vasyakrg@gmail.com
+    privateKeySecretRef:
+      name: orc-letsencrypt-private-key
+    solvers:
+    - selector: {}
+      http01:
+        ingress:
+          class: nginx    

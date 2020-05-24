@@ -1,21 +1,46 @@
+cluster_name: k8s-nsk
+name: k8s-nsk
+enable_cluster_alerting: true
+enable_cluster_monitoring: true
+ignore_docker_version: true
+
 nodes:
-  - address: 10.10.10.70
+  - address: 192.168.9.201
+    hostname_override: node1
     user: root
+    labels:
+      worker: yes
+      location: nsk
     role: [controlplane, worker, etcd]
-  - address: 10.10.10.71
+  - address: 192.168.9.202
+    hostname_override: node2
     user: root
+    labels:
+      worker: yes
+      location: nsk
     role: [controlplane, worker, etcd]
-  - address: 10.10.10.72
+  - address: 192.168.9.203
+    hostname_override: node3
     user: root
+    labels:
+      worker: yes
+      location: nsk
     role: [controlplane, worker, etcd]
 
 services:
   etcd:
     snapshot: true
     creation: 6h
-    retention: 24
+    retention: 30h
+  kube-controller:
+    extra_args:
+      terminated-pod-gc-threshold: 100
+
 
 ingress:
   provider: nginx
   options:
     use-forwarded-headers: "true"
+
+monitoring:
+  provider: "metrics-server"

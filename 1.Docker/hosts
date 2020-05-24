@@ -1,7 +1,11 @@
+[pve]
+pve1 ansible_ssh_host=192.168.9.2
+
 [workers]
-k8s-1 ansible_ssh_host=10.10.10.70
-k8s-2 ansible_ssh_host=10.10.10.71
-k8s-3 ansible_ssh_host=10.10.10.72
+k8s-0 ansible_ssh_host=192.168.9.200
+k8s-1 ansible_ssh_host=192.168.9.201
+k8s-2 ansible_ssh_host=192.168.9.202
+k8s-3 ansible_ssh_host=192.168.9.203
 
 [storages]
 node-1 ansible_ssh_host=
