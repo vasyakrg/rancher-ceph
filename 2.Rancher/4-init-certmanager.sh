@@ -3,7 +3,7 @@
 SERVER=rke.amegaserver.com
 
 # Install the CustomResourceDefinition resources separately
-kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.14/deploy/manifests/00-crds.yaml
+kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.crds.yaml
 
 # Create the namespace for cert-manager
 kubectl create namespace cert-manager
@@ -15,7 +15,7 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 
 # Install the cert-manager Helm chart
-helm upgrade --install \
+helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --version v0.15.0
@@ -28,6 +28,8 @@ openssl genrsa -out tls/ca.key 2048
 openssl req -x509 -new -nodes -key tls/ca.key -subj "/CN=${SERVER}" -days 3650 -out tls/ca.crt -extensions v3_ca -config tls/openssl-with-ca.cnf
 
 kubectl create secret tls orc-ca-keypair --cert=tls/ca.crt --key=tls/ca.key --namespace=cert-manager
+
+sleep 10
 
 kubectl apply -f certmanager/certmanager-deploy.yaml
 kubectl apply -f certmanager/cluster-issuer.yaml
