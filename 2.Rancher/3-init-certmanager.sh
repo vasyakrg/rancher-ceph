@@ -31,5 +31,5 @@ kubectl create secret tls orc-ca-keypair --cert=tls/ca.crt --key=tls/ca.key --na
 
 sleep 10
 
-kubectl apply -f certmanager/certmanager-deploy.yaml
-kubectl apply -f certmanager/cluster-issuer.yaml
+kubectl apply -f certmanager/orc-ca-issuer.yaml
+kubectl apply -f certmanager/orc-letsencrypt-issuer.yaml
