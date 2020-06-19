@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# create and set domain name `rke.amegaserver.com` in DNS-servers BEFORE!
+# create and set domain name `rke-test.amegaserver.com` in DNS-servers BEFORE!
 
-HOST_NAME=rke.amegaserver.com
+HOST_NAME=rke-test.amegaserver.com
 LETS_EMAIL=vasyakrg@gmail.com
 
 kubectl create namespace cattle-system
@@ -17,7 +17,12 @@ kubectl -n cattle-system create secret generic tls-ca \
 helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 
 # with Lets
-# helm install rancher rancher-latest/rancher --namespace cattle-system --set hostname=${HOST_NAME} --set ingress.tls.source=letsEncrypt --set letsEncrypt.email=${LETS_EMAIL}
+# helm upgrade --install rancher \
+#   rancher-latest/rancher \
+#   --namespace cattle-system \
+#   --set hostname=${HOST_NAME} \
+#   --set ingress.tls.source=letsEncrypt \
+#   --set letsEncrypt.email=${LETS_EMAIL}
 
 # with custom CA
 
