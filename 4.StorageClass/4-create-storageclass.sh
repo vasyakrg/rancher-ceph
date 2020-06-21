@@ -1,8 +1,8 @@
 #!/bin/bash
 
-MON1=95.217.222.54
-MON2=95.217.222.55
-MON3=95.217.222.58
+MON1=95.217.166.88
+MON2=95.216.214.79
+MON3=95.217.166.221
 
 cat <<EOF >./storage-class.yaml
 kind: StorageClass

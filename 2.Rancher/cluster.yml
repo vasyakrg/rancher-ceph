@@ -1,5 +1,5 @@
-cluster_name: k8s-nsk
-name: k8s-nsk
+cluster_name: k8s-test
+name: k8s-test
 enable_cluster_alerting: true
 enable_cluster_monitoring: true
 ignore_docker_version: true
