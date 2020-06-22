@@ -8,7 +8,7 @@
 - [ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
 ## Видео к курсу
-- [видео]()
+- [видео](https://vk.com/away.php?to=https%3A%2F%2Fwww.youtube.com%2Fplaylist%3Flist%3DPLEFo-qGWcO2Yc3Tx6u0eWPak-5mU0qSYB&post=-180325524_181&cc_key=)
 
 ##### Автор
 - **Vassiliy Yegorov** - *Initial work* - [vasyakrg](https://github.com/vasyakrg)
