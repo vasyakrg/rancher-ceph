@@ -2,7 +2,7 @@
 
 # create and set domain name `rke-test.amegaserver.com` in DNS-servers BEFORE!
 
-HOST_NAME=rke-test.amegaserver.com
+HOST_NAME=rke.amegaserver.com
 LETS_EMAIL=vasyakrg@gmail.com
 
 kubectl create namespace cattle-system
