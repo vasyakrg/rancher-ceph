@@ -1,5 +1,6 @@
 ---
 docker_user: ubuntu
-docker_version_docker_compose: 1.25.4
+docker_version_docker_ce: 5:19.03.14~3-0~ubuntu-focal
+docker_version_docker_compose: 1.27.4
 docker_additional_service_opts: |
   {}
