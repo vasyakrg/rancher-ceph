@@ -4,7 +4,7 @@
 cat kube_config_cluster.yml > ~/.kube/k8s-nsk
 
 # enable config auth
-export KUBECONFIG=$(find /Users/vasyansk/Documents/Configs/.kube -maxdepth 1 -type f -name '*' | tr "\n" ":")
+export KUBECONFIG=$(find ~/.kube -maxdepth 1 -type f -name '*' | tr "\n" ":")
 
 # test auth to cluster
 kubectl get pods --all-namespaces
