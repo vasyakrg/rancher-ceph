@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # add named from all nodes + localhost
-echo "95.217.166.88 node-1" >> /etc/hosts && echo "95.216.214.79 node-2" >> /etc/hosts && echo "95.217.166.221 node-3" >> /etc/hosts
+echo "135.181.198.30 node-1" >>/etc/hosts && echo "135.181.198.31 node-2" >>/etc/hosts && echo "135.181.198.24 node-3" >>/etc/hosts
 
 # add pass for root - all nodes
 passwd root

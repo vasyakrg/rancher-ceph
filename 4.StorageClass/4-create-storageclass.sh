@@ -1,8 +1,8 @@
 #!/bin/bash
-
-MON1=95.217.166.88
-MON2=95.216.214.79
-MON3=95.217.166.221
+# you real IP !!!
+MON1=135.181.198.30
+MON2=135.181.198.31
+MON3=135.181.198.24
 
 cat <<EOF >./storage-class.yaml
 kind: StorageClass
@@ -23,4 +23,4 @@ parameters:
   imageFeatures: layering
 EOF
 
-kubectl apply -f storage-class.yaml
+kubectl apply -f storage-class.yaml && rm storage-class.yaml

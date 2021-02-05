@@ -1,25 +1,25 @@
 cluster_name: k8s-nsk
 name: k8s-nsk
-enable_cluster_alerting: true
-enable_cluster_monitoring: true
+enable_cluster_alerting: false
+enable_cluster_monitoring: false
 ignore_docker_version: true
 
 nodes:
-  - address: 192.168.9.201
+  - address: 135.181.202.36
     hostname_override: node1
     user: root
     labels:
       worker: yes
       location: nsk
     role: [controlplane, worker, etcd]
-  - address: 192.168.9.202
+  - address: 135.181.202.165
     hostname_override: node2
     user: root
     labels:
       worker: yes
       location: nsk
     role: [controlplane, worker, etcd]
-  - address: 192.168.9.203
+  - address: 135.181.202.164
     hostname_override: node3
     user: root
     labels:
