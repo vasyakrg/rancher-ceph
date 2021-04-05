@@ -1,8 +1,8 @@
 #!/bin/bash
 # you real IP !!!
-MON1=135.181.198.30
-MON2=135.181.198.31
-MON3=135.181.198.24
+MON1=192.168.9.211
+MON2=192.168.9.212
+MON3=192.168.9.213
 
 cat <<EOF >./storage-class.yaml
 kind: StorageClass

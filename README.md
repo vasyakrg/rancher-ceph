@@ -1,6 +1,8 @@
 # Поднимаем кластер k8s и хранилище на Ceph
 - [презентация](https://drive.google.com/file/d/1EbpfgOOxNFBy95a1wARuPgW8cSXN9tGi/view?usp=sharing)
 
+- **Внимание!!! Используем везде Ubuntu 18.04.5**
+
 ## Утилиты
 - [kubectl](https://kubernetes.io/ru/docs/tasks/tools/install-kubectl/)
 - [helm](https://helm.sh/docs/intro/install/)
