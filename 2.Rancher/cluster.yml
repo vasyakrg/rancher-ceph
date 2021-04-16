@@ -38,7 +38,9 @@ services:
   kubelet:
     extra_args:
       max-pods: 250
-
+  kube-api:
+    extra_args:
+      feature-gates: "ServiceAccountIssuerDiscovery=false,RemoveSelfLink=false"
 
 ingress:
   provider: nginx
